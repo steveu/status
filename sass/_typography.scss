@@ -6,63 +6,23 @@
 }
 
 h1 {
-	@include heading(($font-size * 1.6), 0, 1);
 	
-	@media screen and (min-width: 768px) {
-		@include heading(($tablet-font-size * 1.6), 0, 1);
-	}
-	@media screen and (min-width: 896px) {
-		@include heading(($desktop-font-size * 1.5), 0, 1);
-	}
-	@media screen and (min-width: 1024px) {
-		@include heading(($desktop-font-size * 1.6), 0, 1);
-	}
-
-	i {	
-		font-style: normal;
-		color: $text-color;
-		font-size: ($base-font-size * 1.1);
-	}
 }
 h2 {
 
-	@include heading(($font-size * 1.4));
 	
-	@media screen and (min-width: 768px) {
-		@include heading(($tablet-font-size * 1.4));
-	}
-	@media screen and (min-width: 896px) {
-		@include heading(($desktop-font-size * 1.3));
-	}
-	@media screen and (min-width: 1024px) {
-		@include heading(($desktop-font-size * 1.4));
-	}
 }
 h3 {
 
-	@include heading(($font-size * 1.2));
 	
-	@media screen and (min-width: 768px) {
-		@include heading(($tablet-font-size * 1.2));
-	}
-	@media screen and (min-width: 896px) {
-		@include heading(($desktop-font-size * 1.1));
-	}
-	@media screen and (min-width: 1024px) {
-		@include heading(($desktop-font-size * 1.2));
-	}
 }
 h4 {
-	@include heading($base-font-size);
-	text-transform: uppercase;
+
 }
 h5 {
-	@include heading($base-font-size);
+
 }
-h6 {
-	@include heading($base-font-size);
-	font-variant: small-caps;
-}
+
 
 p {
 }
@@ -186,53 +146,4 @@ figure img, figure object, figure embed, figure video {
 img {
 	border: 0; 
 	-ms-interpolation-mode: bicubic;
-}
-
-figure.full {
-	margin-bottom: $gutter;
-	//margin-right: $gutter;
-	position: relative;
-	
-	// instrinsic height
-	padding-bottom: 33.55%;
-	height: 0px;
-
-	background: url('/assets/images/loading.gif') 50% 50% no-repeat;
-	border-bottom: 1px solid rgba(0,0,0,0.3);
-	img {
-		
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-	
-	div {
-		padding: 0 $gutter;
-		width: 100%;
-		position: absolute;
-		@include box-sizing('border-box');
-		bottom: 0px;
-		z-index: 101;
-		figcaption {
-			display: block;
-			max-width: $sidebar-column;
-			min-width: $sidebar-column;
-			//min-width: 25%;
-			background: rgba(0,0,0,0.6);
-			padding: ($gutter / 3) ($gutter / 2);
-			@include box-sizing('border-box');
-			
-			float: right;
-			color: #777;
-
-			@include adjust-font-size-to(($base-font-size * 0.75), 0.85);
-
-			a {
-				color: #aaa;
-				border-color: #777;
-			}
-		}
-	}
 }
