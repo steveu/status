@@ -1,0 +1,26 @@
+// Allows width to not include padding, useful for percentage width + pixel padding
+@mixin border-box() {
+  	-moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+  	-ms-box-sizing: border-box;
+  	box-sizing: border-box;
+}
+
+// Helper mixin for headings
+@mixin heading($font-size: 16px, $pad-top: 1.25, $pad-bottom: 0.75) {
+	//@include adjust-font-size-to($font-size, 1);
+	font-size: $font-size;
+	line-height: 1.5em;
+	@include padding-leader($pad-top, $font-size);
+	@include padding-trailer($pad-bottom, $font-size);
+}
+
+// Useful Classes
+.print_only {
+	display: none;
+}
+.visuallyhidden {
+	visibility: hidden;
+	height: 0px;
+	width: 0px;
+}

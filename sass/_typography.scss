@@ -1,0 +1,238 @@
+#{headings()} {
+	font-weight: normal;
+	color: $heading-color;
+	font-family: $heading-font-family;
+	font-weight: 300;
+}
+
+h1 {
+	@include heading(($font-size * 1.6), 0, 1);
+	
+	@media screen and (min-width: 768px) {
+		@include heading(($tablet-font-size * 1.6), 0, 1);
+	}
+	@media screen and (min-width: 896px) {
+		@include heading(($desktop-font-size * 1.5), 0, 1);
+	}
+	@media screen and (min-width: 1024px) {
+		@include heading(($desktop-font-size * 1.6), 0, 1);
+	}
+
+	i {	
+		font-style: normal;
+		color: $text-color;
+		font-size: ($base-font-size * 1.1);
+	}
+}
+h2 {
+
+	@include heading(($font-size * 1.4));
+	
+	@media screen and (min-width: 768px) {
+		@include heading(($tablet-font-size * 1.4));
+	}
+	@media screen and (min-width: 896px) {
+		@include heading(($desktop-font-size * 1.3));
+	}
+	@media screen and (min-width: 1024px) {
+		@include heading(($desktop-font-size * 1.4));
+	}
+}
+h3 {
+
+	@include heading(($font-size * 1.2));
+	
+	@media screen and (min-width: 768px) {
+		@include heading(($tablet-font-size * 1.2));
+	}
+	@media screen and (min-width: 896px) {
+		@include heading(($desktop-font-size * 1.1));
+	}
+	@media screen and (min-width: 1024px) {
+		@include heading(($desktop-font-size * 1.2));
+	}
+}
+h4 {
+	@include heading($base-font-size);
+	text-transform: uppercase;
+}
+h5 {
+	@include heading($base-font-size);
+}
+h6 {
+	@include heading($base-font-size);
+	font-variant: small-caps;
+}
+
+p {
+}
+
+hr {
+	height: 0px;
+	padding: 0;
+	@include margin-trailer(0.5);
+	@include margin-leader(0.5);
+	
+	border: none;
+	@include trailing-border($width: 1px, $border-style: solid);
+	border-color: #ccc;
+}
+
+blockquote {
+	padding: rhythm() rhythm() rhythm() (rhythm() * 4);
+	background: #efefef;
+	@include margin-trailer(1);
+	@include margin-leader(1);
+	position: relative;
+
+	&:before {
+		content: '\201C';
+		font-size: 200px;
+		line-height: 200px;
+		vertical-align: text-bottom;
+		display: block;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+}
+
+pre {
+	background: rgba(255,255,0,0.1);
+	@include margin-trailer(0.5);
+	@include margin-leader(0.5);
+	padding: (rhythm() / 2) rhythm();
+	border-color: rgba(0,0,0,0.2);
+	@include rhythm-borders($width: 1px, $border-style: dotted);
+
+	//@include radial-gradient(color-stops(rgba(255,255,255,0.7), rgba(255,255,255,0)));
+	@include background-image(linear-gradient(color-stops(rgba(255,255,255,0.5), rgba(255,255,255,0))));
+}
+
+ul {
+	list-style: disc;
+	//@include padding-trailer(1);
+	li {
+	}
+}
+ol {
+	list-style: decimal;
+	color: red;
+	@include padding-trailer(1);
+	li {
+		color: $text-color;
+	}
+}
+
+ol + h2 {
+	padding-top: 0;
+}
+	
+p + p {
+	@include padding-leader(1);
+}
+
+p+ul, p+ol, p+dl {
+	@include padding-leader(1);
+}
+ul+p, ol+p {
+	
+}
+
+a {
+	color: #069;
+	text-decoration: none;
+	border-bottom: 1px dotted #069;
+
+	&:hover {
+		color: #0092DD;
+		border-bottom: 1px solid #0092DD;
+	}
+}
+
+
+dl {
+	dt {
+		font-weight: bold;
+	}
+	dd {
+		padding-left: rhythm(1);
+		@include padding-trailer(1);
+	}
+}
+
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: bold;
+}
+
+code {
+	font-family: monospace;
+	@include adjust-font-size-to(15px,0);
+	color: #BC5401;
+}
+
+
+
+figure {
+	position: relative;
+}
+figure img, figure object, figure embed, figure video {
+	max-width: 100%; 
+	display: block;
+}
+img {
+	border: 0; 
+	-ms-interpolation-mode: bicubic;
+}
+
+figure.full {
+	margin-bottom: $gutter;
+	//margin-right: $gutter;
+	position: relative;
+	
+	// instrinsic height
+	padding-bottom: 33.55%;
+	height: 0px;
+
+	background: url('/assets/images/loading.gif') 50% 50% no-repeat;
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+	img {
+		
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	div {
+		padding: 0 $gutter;
+		width: 100%;
+		position: absolute;
+		@include box-sizing('border-box');
+		bottom: 0px;
+		z-index: 101;
+		figcaption {
+			display: block;
+			max-width: $sidebar-column;
+			min-width: $sidebar-column;
+			//min-width: 25%;
+			background: rgba(0,0,0,0.6);
+			padding: ($gutter / 3) ($gutter / 2);
+			@include box-sizing('border-box');
+			
+			float: right;
+			color: #777;
+
+			@include adjust-font-size-to(($base-font-size * 0.75), 0.85);
+
+			a {
+				color: #aaa;
+				border-color: #777;
+			}
+		}
+	}
+}
