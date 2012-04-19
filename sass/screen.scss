@@ -107,9 +107,9 @@ header {
 }
 
 div.status {
-	height: 248px;
+	height: 268px;
 	padding: $gutter $gutter 0 $gutter;
-
+	position: relative;
 	h1 {
 		font-size: 22px;
 		line-height: 30px;
@@ -120,6 +120,12 @@ div.status {
 		color: #ccc;
 		font-weight: bold;
 		text-align: left;
+		/*
+		padding: 0px 0 0 0;
+		position: absolute;
+		bottom: $gutter;
+		left: $gutter + 2;
+		*/
 		padding: 11px 0 0 0;
 	}
 }
@@ -128,8 +134,9 @@ ul.answers {
 	list-style: none;
 	margin: 0 22px 0 0;
 	padding: 0;
+
 	li {
-		padding: 0;
+		padding: 0px 0 0 0;
 		width: 77px;
 		margin-left: 22px;
 		float: left;
@@ -149,6 +156,70 @@ ul.answers {
 			;
 		}
 
+		position: relative;
+		width: 77px;
+		height: 90px;
+
+		.front, .back {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			min-height: 100%;
+			-webkit-backface-visibility: hidden;
+			-webkit-transform-style: preserve-3d;
+			-webkit-transition: all .15s ease-in-out;
+		}
+
+		.front {
+			-webkit-transform: rotateY(0deg);
+		}
+		.back {
+			-webkit-transform: rotateY(180deg);
+		}
+		&.flip .front {
+			-webkit-transform: rotateY(-180deg);
+		}
+		&.flip .back {
+			-webkit-transform: rotateY(0deg);
+		}
+
+		.back {
+			div.right {
+
+				background: green;
+				color: #fff;
+				padding: $gutter 0;
+			}
+		}
+	}
+}
+
+
+footer {
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: $gutter;
+		text-align: center;
+		li {
+			margin: 5px;
+			display: inline-block;
+			text-indent: -99999px;
+			list-style: none;
+
+		
+			width: 7px;
+			height: 7px;
+			border-radius: 50%;
+			background: #ddd;
+			
+			&.y {
+				background: #aaa;
+			}
+			&.n {
+				background: red;
+			}
+		}
 	}
 }
 

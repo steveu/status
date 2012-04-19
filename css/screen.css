@@ -29,41 +29,7 @@ body { font-family: sans-serif; color: #4f4f4f; background: #333; -webkit-text-s
 
 h1, h2, h3, h4, h5, h6 { font-weight: normal; color: #54524e; font-family: sans-serif; font-weight: 300; }
 
-hr { height: 0px; padding: 0; margin-bottom: 0.688em; margin-top: 0.688em; border: none; border-bottom-style: solid; border-bottom-width: 0.063em; padding-bottom: 1.313em; border-color: #ccc; }
-
-blockquote { padding: 1.375em 1.375em 1.375em 5.5em; background: #efefef; margin-bottom: 1.375em; margin-top: 1.375em; position: relative; }
-blockquote:before { content: '\201C'; font-size: 200px; line-height: 200px; vertical-align: text-bottom; display: block; position: absolute; top: 0px; left: 0px; }
-
-pre { background: rgba(255, 255, 0, 0.1); margin-bottom: 0.688em; margin-top: 0.688em; padding: 0.688em 1.375em; border-color: rgba(0, 0, 0, 0.2); border-style: dotted; border-width: 0.063em; padding: 1.313em; background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.5)), color-stop(100%, rgba(255, 255, 255, 0))); background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); background-image: -o-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); background-image: -ms-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); }
-
-ul { list-style: disc; }
-
-ol { list-style: decimal; color: red; padding-bottom: 1.375em; }
-ol li { color: #4f4f4f; }
-
-ol + h2 { padding-top: 0; }
-
-p + p { padding-top: 1.375em; }
-
-p + ul, p + ol, p + dl { padding-top: 1.375em; }
-
-a { color: #069; text-decoration: none; border-bottom: 1px dotted #069; }
-a:hover { color: #0092DD; border-bottom: 1px solid #0092DD; }
-
-dl dt { font-weight: bold; }
-dl dd { padding-left: 1.375em; padding-bottom: 1.375em; }
-
-em { font-style: italic; }
-
-strong { font-weight: bold; }
-
-code { font-family: monospace; font-size: 0.938em; line-height: 0em; color: #BC5401; }
-
-figure { position: relative; }
-
-figure img, figure object, figure embed, figure video { max-width: 100%; display: block; }
-
-img { border: 0; -ms-interpolation-mode: bicubic; }
+a { color: #069; }
 
 .wrapper { width: 320px; box-sizing: border-box; height: 480px; margin: 50px auto; background: #f2f1ee; box-shadow: 0px 0px 44px rgba(0, 0, 0, 0.2); }
 
@@ -71,10 +37,26 @@ header { padding: 11px; height: 22px; position: relative; }
 header a { display: inline-block; background: #069; padding: 0px 10px; height: 22px; line-height: 22px; color: #fff; font-size: 13px; font-weight: bold; }
 header div#score { position: absolute; top: 11px; right: 11px; text-align: right; width: 200px; font-size: 18px; color: #aaa; height: 22px; line-height: 22px; }
 
-div.status { height: 248px; padding: 22px 22px 0 22px; }
+div.status { height: 268px; padding: 22px 22px 0 22px; position: relative; }
 div.status h1 { font-size: 22px; line-height: 30px; }
-div.status p { font-size: 13px; color: #ccc; font-weight: bold; text-align: left; padding: 11px 0 0 0; }
+div.status p { font-size: 13px; color: #ccc; font-weight: bold; text-align: left; /*
+padding: 0px 0 0 0;
+position: absolute;
+bottom: $gutter;
+left: $gutter + 2;
+*/ padding: 11px 0 0 0; }
 
 ul.answers { list-style: none; margin: 0 22px 0 0; padding: 0; }
-ul.answers li { padding: 0; width: 77px; margin-left: 22px; float: left; text-align: center; font-size: 13px; font-weight: bold; text-shadow: 0px -1px 1px rgba(255, 255, 255, 0.2); }
+ul.answers li { padding: 0px 0 0 0; width: 77px; margin-left: 22px; float: left; text-align: center; font-size: 13px; font-weight: bold; text-shadow: 0px -1px 1px rgba(255, 255, 255, 0.2); position: relative; width: 77px; height: 90px; }
 ul.answers li img { display: block; width: 77px; height: 77px; margin-bottom: 5px; border-radius: 25%; box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(255, 255, 255, 0.2); }
+ul.answers li .front, ul.answers li .back { position: absolute; top: 0; width: 100%; min-height: 100%; -webkit-backface-visibility: hidden; -webkit-transform-style: preserve-3d; -webkit-transition: all .15s ease-in-out; }
+ul.answers li .front { -webkit-transform: rotateY(0deg); }
+ul.answers li .back { -webkit-transform: rotateY(180deg); }
+ul.answers li.flip .front { -webkit-transform: rotateY(-180deg); }
+ul.answers li.flip .back { -webkit-transform: rotateY(0deg); }
+ul.answers li .back div.right { background: green; color: #fff; padding: 22px 0; }
+
+footer ol { list-style: none; margin: 0; padding: 22px; text-align: center; }
+footer ol li { margin: 5px; display: inline-block; text-indent: -99999px; list-style: none; width: 7px; height: 7px; border-radius: 50%; background: #ddd; }
+footer ol li.y { background: #aaa; }
+footer ol li.n { background: red; }
